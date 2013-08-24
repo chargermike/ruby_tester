@@ -36,6 +36,15 @@ end
 task :examples => [:setup, :rspec_selenium_page_obj, :rspec_selenium, :rspec_rest_client, :rspec_selenium_screen_shot]
 
 
+#mike
+Spec::Core::RakeTask.new(:facebook => ["ci:setup:rspec"]) do |t|
+    t.pattern = 'spec/facebook_test/facebook.rb'
+end
+Spec::Core::RakeTask.new(:failfacebook => ["ci:setup:rspec"]) do |t|
+    t.pattern = 'spec/facebook_test/failfacebook.rb'
+end
+
+
 # DEFAULT
 task :default do
 	exec("irb -r ./lib/irb/bootstrap_irb.rb")
